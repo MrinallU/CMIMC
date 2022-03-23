@@ -34,79 +34,56 @@ while True:
     my_index = _data["my_index"]
     buys = [0] * 10
     my_score = scores[my_index]
-  
+
     profitToCoinMap = {}
     # End input
-    
-    
+
+
     ## REPLACE STRATEGY BELOW ##
 
     buys[0] = 0
     buys[1] = 0
     buys[2] = 0 
     buys[3] = 0
-    buys[8] = 0
-    buys[9] = 0
-  
-  
+
+
     if day == 0: 
       assert yesterday == [] # yesterday is empty on first day
-      # buys[4] = 12
-      # buys[5] = 14
-      # buys[6] = 16
-      # buys[7] = 18
-      # buys[8] = 19
-      # buys[9] = 21
-
-      
-      buys[4] = 25
-      buys[5] = 25
-      buys[6] = 25
-      buys[7] = 25
-
-    elif day <= 10:
-      profits = [0] * 10
+      buys[4] = 12
+      buys[5] = 14
+      buys[6] = 16
+      buys[7] = 18
+      buys[8] = 19
+      buys[9] = 21
+    else:
       # Proportional
-      # buys[4] = 9
-      # buys[5] = 10
-      # buys[6] = 11
-      # buys[7] = 12
-      # buys[8] = 13
-      # buys[9] = 14
-      
-      buys[4] = 25
-      buys[5] = 25
-      buys[6] = 25
-      buys[7] = 25
+      buys[4] = 9
+      buys[5] = 10
+      buys[6] = 11
+      buys[7] = 12
+      buys[8] = 13
+      buys[9] = 14
 
-      
       # Interpolate
-      
-      # # find top 6 profit
-      # for i in range(len(yesterday)):
-      #   for j in range(len(yesterday[i])):
-      #     if yesterday[i][j] != 0:
-      #       profits[j] += yesterday[i][j];
 
-      # for i in range(len(profits)):
-      #   if(profits[i] != 0):
-      #     profits[i] = (i+1) / profits[i]
-        
-      # for i in range(len(profits)):
-      #   profitToCoinMap[profits[i]] = i
-         
-      # profits.sort()
-      # print(profits, file = sys.stderr)
-      # print("", file = sys.stderr)
-      
-      # buys[profitToCoinMap[profits[9]]] += 10
-      # buys[profitToCoinMap[profits[8]]] += 8
-      # buys[profitToCoinMap[profits[7]]] += 6
-      # buys[profitToCoinMap[profits[6]]] += 4
-      # buys[profitToCoinMap[profits[5]]] += 2
-      # buys[profitToCoinMap[profits[4]]] += 1
-    
-    
+      # find top 6 profit
+      for i in range(len(yesterday)):
+        for j in range(len(yesterday[i])):
+          if yesterday[i][j] != 0:
+            profits[j] += (j+1) / yesterday[i][j];
+
+      for i in range(len(profits)):
+        profitToCoinMap[profits[i]] = i
+
+      profits.sort()
+
+      buys[profitToCoinMap[profits[9]]] += 10
+      buys[profitToCoinMap[profits[8]]] += 8
+      buys[profitToCoinMap[profits[7]]] += 6
+      buys[profitToCoinMap[profits[6]]] += 4
+      buys[profitToCoinMap[profits[5]]] += 2
+      buys[profitToCoinMap[profits[4]]] += 1
+
+
     output(buys)
-    day += 1
-
+    day += 1 
