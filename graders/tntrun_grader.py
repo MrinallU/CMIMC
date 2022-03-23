@@ -57,7 +57,7 @@ class TNTRun(AIGrader):
             if grace_moves_left: grace_moves_left -= 1
             move_number += 1
         return {
-            'history': history,
+        
             'summary': summary,
             'playerlogs': [p.interaction_log() for p in players]
         }

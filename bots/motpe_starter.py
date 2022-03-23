@@ -63,6 +63,18 @@ if role == "drone":
 if role == "tower":
     # Can read variable "airspace", but not "bits"
     print("airspace", ''.join(map(str, airspace[255])), file = sys.stderr) # example print
+    x = 128
+    y = 0
+    # 128 center
+    for i in range 64:
+      minChance = min(min(airspace[x][y+1], airspace[x+1][y]), airspace[x-1][y])
+      if(airspace[x][y+1] <= 9):
+        airspace[i] = 1
+        y++;
+      else if(airspace[x+1][y] <= 9):
+        
+        
+      
     message = random.choices((0, 1), k = 64)
     tower_output(message)
 
